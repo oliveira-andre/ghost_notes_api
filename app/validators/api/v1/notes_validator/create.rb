@@ -25,7 +25,6 @@ module Api
             title: @title, body: @body, password: @password
           )
           @note.keys << @keys
-          debugger
           return if @note.valid?
 
           raise ServiceException.new, ''
