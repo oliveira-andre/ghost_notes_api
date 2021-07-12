@@ -7,7 +7,9 @@ module Api
         serializer(NotesValidator::Create.new(create_note_params).execute)
       end
 
-      def destroy; end
+      def destroy
+        serializer(NotesValidator::Destroy.new(slug: params[:slug]).execute)
+      end
 
       private
 

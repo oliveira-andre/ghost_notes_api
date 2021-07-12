@@ -14,7 +14,8 @@ module Api
           title: data.title,
           body: data.body,
           password: data&.encrypted_password,
-          public_keys: data&.keys
+          public_keys: data&.keys,
+          slug: data.slug
         }
       end
     end
