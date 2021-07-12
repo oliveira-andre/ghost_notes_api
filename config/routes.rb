@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :notes, only: %i[create destroy], param: :slug do
-    get :password
+  namespace :api do
+    namespace :v1 do
+      resources :notes, only: %i[create destroy], param: :slug
+    end
   end
 end
