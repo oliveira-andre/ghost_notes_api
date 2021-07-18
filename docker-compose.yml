@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  api:
+    build: .
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/usr/src/app
+    env_file:
+      - config/docker.env
+    depends_on:
+      - database
+    stdin_open: true
+    tty: true
+
+  database:
+    image: postgres:12.3
+    env_file:
+      - config/docker.env
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - '5435:5432'
+
+volumes:
+  db_data:
