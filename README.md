@@ -21,6 +21,12 @@ curl
 curl -kv -H 'content-type: application/json' -d '{ "notes": { "title": "i am first title", "body": "i am first body", "keys": "049c0e65185bc34574ec33c4e3ea7bc8189eec1cbccd7aa482c6e94931b1f699e312cf033be0c191fbb1285f4411a088a462f28ca39a4ac3f67769aaf675c4d6e2" } }' -X 'POST' 'http://localhost:3000/api/v1/notes' | jq
 ```
 
+or with password
+
+```
+curl -kv -H 'content-type: application/json' -d '{ "notes": { "title": "i am first title", "body": "i am first body", "keys": "049c0e65185bc34574ec33c4e3ea7bc8189eec1cbccd7aa482c6e94931b1f699e312cf033be0c191fbb1285f4411a088a462f28ca39a4ac3f67769aaf675c4d6e2", "password": "safe" } }' -X 'POST' 'http://localhost:3000/api/v1/notes' | jq
+```
+
 expected response
 
 ```json
@@ -49,5 +55,35 @@ expected response
 
 ```
 no content
+```
+</details>
+
+<details>
+<summary>Show</summary>
+
+curl
+
+```
+curl -kv -H 'content-type: application/json' -X 'GET' 'http://localhost:3001/api/v1/notes/i-am-first-title-a8c9c608-6bb5-4937-8bdb-068b3b929134' | jq
+```
+
+or with password
+
+```
+curl -kv -H 'content-type: application/json' -X 'GET' 'http://localhost:3001/api/v1/notes/i-am-first-title-70acacdb-7145-4541-9edf-2e11a191e498/password/safe123' | jq
+```
+
+expected response
+
+```json
+{
+  "title": "i am first title",
+  "body": "i am first body",
+  "password": null,
+  "public_keys": [
+    "049c0e65185bc34574ec33c4e3ea7bc8189eec1cbccd7aa482c6e94931b1f699e312cf033be0c191fbb1285f4411a088a462f28ca39a4ac3f67769aaf675c4d6e2"
+  ],
+  "slug": "i-am-first-title-a8c9c608-6bb5-4937-8bdb-068b3b929134"
+}
 ```
 </details>
