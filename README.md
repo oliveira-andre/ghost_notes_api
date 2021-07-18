@@ -8,6 +8,18 @@ i love to create ghost notes and we never can be sure of a project until read th
 project to encrypt all notes to be sure that no one instead of you will access the information that you saved
 ```
 
+## How to use
+
+building and running api and postgres
+```
+sudo docker-compose up --build
+```
+
+creating and migrating database
+```
+sudo docker-compose run --rm api rails db:create db:migrate
+```
+
 ## Responses
 
 ### Notes
@@ -64,13 +76,13 @@ no content
 curl
 
 ```
-curl -kv -H 'content-type: application/json' -X 'GET' 'http://localhost:3001/api/v1/notes/i-am-first-title-a8c9c608-6bb5-4937-8bdb-068b3b929134' | jq
+curl -kv -H 'content-type: application/json' -X 'GET' 'http://localhost:3000/api/v1/notes/i-am-first-title-a8c9c608-6bb5-4937-8bdb-068b3b929134' | jq
 ```
 
 or with password
 
 ```
-curl -kv -H 'content-type: application/json' -X 'GET' 'http://localhost:3001/api/v1/notes/i-am-first-title-70acacdb-7145-4541-9edf-2e11a191e498/password/safe123' | jq
+curl -kv -H 'content-type: application/json' -X 'GET' 'http://localhost:3000/api/v1/notes/i-am-first-title-70acacdb-7145-4541-9edf-2e11a191e498/password/safe123' | jq
 ```
 
 expected response
