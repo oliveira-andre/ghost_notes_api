@@ -10,11 +10,11 @@ class Note < ApplicationRecord
   validates_uniqueness_of :slug
 
   def password
-    @password ||= Password.new(encrypted_password)
+    @password ||= encrypted_password ? Password.new(encrypted_password) : nil
   end
 
   def password=(new_password)
-    @password = Password.create(new_password)
+    @password = new_password ? Password.create(new_password) : nil
     self.encrypted_password = @password
   end
 
