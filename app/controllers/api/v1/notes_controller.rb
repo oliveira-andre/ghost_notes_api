@@ -11,6 +11,14 @@ module Api
         serializer(NotesValidator::Destroy.new(slug: params[:slug]).execute)
       end
 
+      def show
+        serializer(
+          NotesValidator::Show.new(
+            slug: params[:slug], password: params[:password]
+          ).execute
+        )
+      end
+
       private
 
       def create_note_params
