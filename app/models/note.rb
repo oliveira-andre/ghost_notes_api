@@ -6,7 +6,7 @@ class Note < ApplicationRecord
 
   friendly_id :title, use: :slugged
 
-  validates_presence_of :body, :title, :keys, :slug
+  validates_presence_of :body, :title, :slug
   validates_uniqueness_of :slug
 
   def password
