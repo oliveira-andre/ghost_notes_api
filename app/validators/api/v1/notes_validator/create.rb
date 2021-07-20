@@ -8,14 +8,14 @@ module Api
           @title = params[:title]
           @body = params[:body]
           @password = params[:password]
-          @keys = params[:keys] || []
+          @keys = params[:keys] || ''
         end
 
         def execute
           validate
           create
 
-          { data: @note, serializer: NotesSerializer, status: :ok }
+          { data: @note, serializer: NotesSerializer, status: :created }
         end
 
         private
