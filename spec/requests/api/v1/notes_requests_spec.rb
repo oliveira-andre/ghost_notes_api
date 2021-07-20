@@ -31,7 +31,26 @@ RSpec.describe 'Notes Management' do
   end
 
   context :show do
-    pending
+    subject { get current_path }
+    let(:current_path) { "/api/v1/notes/#{note_slug}" }
+
+    context :not_existent_note do
+      let(:note_slug) { 'not_found' }
+
+      before { subject }
+
+      it { expect(response).to have_http_status(:unprocessable_entity) }
+    end
+
+    context :with_existent_note do
+      let(:note) { create(:note) }
+      let(:note_slug) { note.slug }
+
+      before { subject }
+
+      it { expect(response).to have_http_status(:ok) }
+      it { expect(parsed_response['slug']).to eq(note_slug) }
+    end
   end
 
   context :destroy do
