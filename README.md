@@ -20,6 +20,23 @@ creating and migrating database
 sudo docker-compose run --rm api rails db:create db:migrate
 ```
 
+## How to run tests
+
+Rubocop
+```
+sudo docker-compose run --rm api rubocop -A
+```
+
+Rspec
+```
+sudo docker-compose run --rm api rspec
+```
+
+Brakeman
+```
+sudo docker-compose run --rm api brakeman
+```
+
 ## Responses
 
 ### Notes
