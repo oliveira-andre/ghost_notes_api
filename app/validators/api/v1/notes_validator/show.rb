@@ -22,7 +22,7 @@ module Api
           @note = Note.find_by(slug: @slug)
           return if @note
 
-          raise ServiceExceptino.new, ''
+          raise ServiceException.new, ''
         end
 
         def check_password
